@@ -41,6 +41,6 @@ class ManiuplatorModel:
         """
         q1, q2, q1_dot, q2_dot = x
 
-        C = np.array([[-self.beta * np.sin(q2_dot), -self.beta * np.sin(q1_dot + q2_dot)],
-                      [self.beta * np.sin(q1_dot) , 0                                   ]])
+        C = np.array([[-self.beta * np.sin(q2) * q2_dot, -self.beta * np.sin(q2) * (q1_dot + q2_dot)],
+                      [self.beta * np.sin(q2) * q1_dot , 0                                          ]])
         return C

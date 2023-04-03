@@ -11,5 +11,11 @@ class FeedbackLinearizationController(Controller):
         """
         Please implement the feedback linearization using self.model (which you have to implement also),
         robot state x and desired control v.
-        """
-        return NotImplementedError()
+        """        
+        v = q_r_ddot
+
+        M = self.model.M(x)
+        C = self.model.C(x)
+        
+        tau = M.dot(v) + C.dot(q_r_dot) 
+        return tau

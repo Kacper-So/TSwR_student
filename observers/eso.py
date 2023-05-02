@@ -18,6 +18,12 @@ class ESO:
     def update(self, q, u):
         self.states.append(copy(self.state))
         ### TODO implement ESO update
+        z = np.reshape(self.state, (len(self.state), 1))
+        x_pred = self.A @ z + self.B * u
+        y = q - self.W @ self.state
+        x_est = self.L @ np.array([y])
+        self.state = self.state + np.reshape((x_pred + x_est), (1, len(x_pred))).flatten() * self.Tp
+
 
     def get_state(self):
         return self.state

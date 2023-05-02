@@ -33,6 +33,9 @@ def simulate_pybullet(trajectory_generator, controller, timesteps, multimodel):
         manipulator.set_control(control)
         manipulator.simulation_step()
         sleep(timesteps[1] / 2)
+
+        controller.u = control
+        
     return np.array(Q), np.array(Q_d), np.array(ctrl), timesteps
 
 

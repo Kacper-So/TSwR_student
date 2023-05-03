@@ -37,4 +37,5 @@ class ADRCJointController(Controller):
         M = self.model.M(x_copy)
         M = np.linalg.inv(M)
         self.set_b(M[index, index])
+        print(u)
         return u
